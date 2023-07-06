@@ -1,0 +1,82 @@
+#:kivy 1.0.9
+
+<HomeScreen>:
+
+    canvas.before:
+        
+        Rectangle: 
+            size: self.size
+            source: './data/background.png'
+
+    Label:
+        font_size: 120  
+        color: 147, 147, 147, 1
+        center_y: self.height / 2 + 200
+        text: 'TOEFL Plus'
+
+    Label:
+        font_size: 100  
+        center_x: self.width /2 - 50
+        center_y: self.height/2 + 25
+        text: 'Day: '
+    
+<WordsScreen>:
+    
+    canvas.before:
+        
+        Rectangle: 
+            size: self.size
+            source: './data/background.png'
+
+    Label:
+        font_size: 100  
+        center: self.center
+        text: root.wordsList[int(root.current_idx)]
+
+    Label:
+        font_size: 60  
+        center: self.width / 5, 9 * self.height /10
+        text: 'Day ' + str(int(int(root.current_idx) / 50) + 1)
+
+    Label:
+        font_size: 60  
+        center: 4 * self.width / 5, 9 * self.height /10
+        text: str(49 - int(root.current_idx) % 50) + ' Left'
+
+<TranslationScreen>:
+    
+    canvas.before:
+        
+        Rectangle: 
+            size: self.size
+            source: './data/background.png'
+
+    Label:
+        font_size: 60  
+        center: self.center
+        text: root.translationList[int(root.current_idx)]
+
+<ScreensManager>:
+    
+    HomeScreen:
+
+        day: selected_day
+        name: 'home'
+
+        TextInput:
+
+            id: selected_day
+            font_size: 30
+            background_color: 147, 147, 147, 1
+            cursor_color: 0, 0, 0, 1
+            center: root.center_x + 100, root.center_y +25
+            size_hint_x: .16
+            size_hint_y: .04
+
+    WordsScreen:
+       
+        name: 'words'
+    
+    TranslationScreen:
+        
+        name: 'translation'
