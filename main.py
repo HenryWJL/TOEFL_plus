@@ -27,7 +27,7 @@ def text_modify(text):
 class WordsScreen(Screen):
     current_idx = NumericProperty(0)
     wordsList = []
-    with open('word.txt', 'r') as f:
+    with open('data/word.txt', 'r') as f:
         wordsList = f.readlines()
     
     
@@ -48,7 +48,7 @@ class WordsScreen(Screen):
 class TranslationScreen(Screen):
     current_idx = NumericProperty(0)
     translationList = []
-    with open('translation.txt', 'r') as f:
+    with open('data/translation.txt', 'r') as f:
         translationList = f.readlines()
     translationList = text_modify(translationList)
     
